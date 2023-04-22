@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import Signup from "./component/Signup";
 export const metadata: Metadata = {
   title: "My yt Signup ",
@@ -6,8 +7,9 @@ export const metadata: Metadata = {
 };
 export default function page() {
   return (
-    <div className="flex w-full min-h-screen border-4 border-red-900 justify-center items-center">
+    <div className="flex flex-col w-full min-h-screen border-4 border-red-900 justify-center items-center">
       <Signup />
+      <Link href={"/login"}>Login </Link>
     </div>
   );
 }

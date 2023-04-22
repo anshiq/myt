@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Login from "./component/Login";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "My yt login",
@@ -8,8 +9,9 @@ export const metadata: Metadata = {
 
 function page() {
   return (
-    <div className="flex w-full min-h-screen border-4 border-red-900 justify-center items-center">
+    <div className="flex flex-col w-full min-h-screen border-4 border-red-900 justify-center items-center">
       <Login />
+      <Link href={"/signup"}>Signup</Link>
     </div>
   );
 }
