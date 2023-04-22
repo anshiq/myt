@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "pretty": "prettier --write ./app/\"./**/*.{js,jsx,ts,tsx,json}\"" ,
+    "pretty": "prettier --write ./app/\"./**/*.{js,jsx,ts,tsx,json}\"",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
