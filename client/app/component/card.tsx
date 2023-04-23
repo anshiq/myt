@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-export default function Card(data) {
+type Props = {
+  data : videoDetails
+}
+export default function Card({data}:Props) {
   return (
     <>
       <Link
@@ -10,18 +13,19 @@ export default function Card(data) {
         <div className="w-full">
           <Image
             className="w-full"
-            src={`https://static-cse.canva.com/blob/1024437/1600w-wK95f3XNRaM.jpg`}
+            alt="error"
+            width={320}
+            height={180}
+            src={`http://127.0.0.1:8080/${data._id}.jpg`}
           />
         </div>
         <div>
           <h2>
-            {" "}
-            hi there ima ima brown boy hule hule hi th hi there ima ima brown
-            boy hule hule hi there ima ima brown boy hule hule{" "}
+            {`${data.name}`}
           </h2>
         </div>
         <div>
-          <h3>{"data.description"}</h3>
+          <h3>{`${data.description}`}</h3>
         </div>
       </Link>
     </>

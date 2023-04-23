@@ -1,5 +1,5 @@
 async function getAllVideos() {
-  const  response = await fetch('http:127.0.0.1:8080/api/all')
+  const  response = await fetch('http:127.0.0.1:8080/api/all',{cache: 'no-store'})
   if(response.ok){
    // const data = await response.json()
    // console.log(data)
