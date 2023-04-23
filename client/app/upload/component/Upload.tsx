@@ -1,4 +1,5 @@
 "use client";
+import uploadVideo from "@/lib/uploadVideo";
 import React from "react";
 import { useState } from "react";
 function Upload() {
@@ -19,11 +20,11 @@ function Upload() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formdata = new FormData();
-    formdata.append("title", details.title);
+    formdata.append("name", details.title);
     formdata.append("description", details.description);
     formdata.append("image", image);
     formdata.append("video", video);
-    console.log(formdata);
+    uploadVideo(formdata);
   };
   return (
     <form className="flex flex-col justify-center " onSubmit={handleSubmit}>
