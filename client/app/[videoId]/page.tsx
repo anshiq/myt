@@ -1,5 +1,7 @@
 import React, { Suspense } from "react";
 import Video from "./components/Video";
+import Recommendations from "./components/Recommendations";
+import getAllVideos from "@/lib/getAllVideos";
 
 type Params = {
   params: {
@@ -7,12 +9,16 @@ type Params = {
   };
 };
 
-function page({ params: { videoId } }: Params) {
+async function page({ params: { videoId } }: Params) {
+  const allvideos: videoDetails[] = await getAllVideos();
   return (
     <>
-      <Suspense fallback={<section> Loading .....</section>}>
-        <Video vidUrl={videoId} />
-      </Suspense>
+      <div>
+        <Suspense fallback={<section> Loading .....</section>}>
+          <Video vidUrl={videoId} />
+        </Suspense>
+        <Recommendations allvideos={allvideos} />
+      </div>
     </>
   );
 }
