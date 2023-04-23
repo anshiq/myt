@@ -8,16 +8,17 @@ type Props = {};
 function Navbar({}: Props) {
   return (
     <>
-      <nav className="flex px-4 bg-red-500  flex-row items-center  w-full">
-        <div>
-          <VscMenu size="2.3rem" />
+      <nav className="flex bg-red-500 py-1  flex-row items-center  w-full">
+        <div className="mx-2">
+          <VscMenu size='2rem' />
         </div>
-        <div className="flex ml-6 flex-row bg-green-500 justify-between w-full">
+        <div className="flex  flex-row bg-green-500 justify-between w-full">
           <Image
-            width={200}
-            height={50}
+            width={90}
+            height={90}
+
             alt="My yt"
-            className="h-12"
+            className="sm:h-12 h-10 sm:w-auto w-12"
             src="/titleicon.png"
           />
           <Search />

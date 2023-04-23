@@ -7,6 +7,7 @@ export default function Card({ data }: Props) {
   return (
     <>
       <Link
+        key={data._id}
         className="flex my-4 flex-col items-start justify-center"
         href={`/${data._id}`}
       >
