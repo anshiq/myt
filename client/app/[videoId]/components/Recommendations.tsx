@@ -9,7 +9,8 @@ type prop = {
 function Recommendations({ allvideos }: prop) {
   const content = allvideos.map((eachVideo: videoDetails) => (
     <>
-      <Link key={eachVideo._id}
+      <Link
+        key={eachVideo._id}
         className="flex my-4  flex-col items-center px-1 pb-4 w-fit h-fit shadow-xl bg-gray-300 justify-center"
         href={`/${eachVideo._id}`}
       >
@@ -27,9 +28,7 @@ function Recommendations({ allvideos }: prop) {
       </Link>
     </>
   ));
-  return <>
-    {content}
-    </>;
+  return <>{content}</>;
 }
 
 export default Recommendations;
