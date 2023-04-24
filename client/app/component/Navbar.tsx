@@ -1,17 +1,18 @@
-import React from "react";
+'use client'
+import React,{useState} from "react";
 import { VscMenu } from "react-icons/vsc";
 import Image from "next/image";
 import Search from "./Search";
 import SideMenu from "./SideMenu";
 
-type Props = {};
 
-function Navbar({}: Props) {
+function Navbar() {
+  const [showMenu, setShowMenu] = useState(false)
   return (
     <>
       <nav className="flex fixed bg-red-500 py-1 top-0  flex-row items-center  w-full">
         <div className="mx-2">
-          <VscMenu size="2rem" />
+          <VscMenu onClick={()=>setShowMenu(!showMenu)} size="2rem" />
         </div>
         <div className="flex  flex-row bg-green-500 justify-between w-full">
           <Image
@@ -24,7 +25,10 @@ function Navbar({}: Props) {
           <Search />
           <div></div>
         </div>
-        <SideMenu />
+          <div className={showMenu===true?"flex":"hidden"}>
+
+        <SideMenu  />
+        </div>
       </nav>
     </>
   );

@@ -1,4 +1,5 @@
 "use client";
+import Login from "@/lib/Login";
 import React, { useState } from "react";
 
 export default function login() {
@@ -10,8 +11,17 @@ export default function login() {
       [name]: value,
     }));
   };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+  const token:tokenDetails =  await Login(creds.email,creds.password)
+    console.log(token)
+    if (token.login==true){
+     localStorage.setItem("myytkey",JSON.stringify(token))
+      alert(token.msg)
+    }
+    else{
+alert(token.msg)
+    }
   };
   return (
     <form

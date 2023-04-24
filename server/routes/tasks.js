@@ -24,7 +24,7 @@ authRouter
   .route("/change/:_id")
   .patch(updateTask)
   .delete(deleteTask)
-  .post(getAllTask);
+  .post(getAllTask); // to get all task so that he can delete by choise.
 authRouter.route("/getDetails").post(getUserDetails);
 authUploadRouter.route("/").post(createTask);
 module.exports = { router, authRouter, authUploadRouter };

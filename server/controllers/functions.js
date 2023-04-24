@@ -6,6 +6,7 @@ const {
   comparePassword,
   sendJwtToken,
 } = require("../middleware/middleware");
+// const { convertVideoFormat, convertImageFormat } = require("../middleware/fileFormatCheck");
 const getThunb = (req, res) => {
   let fileName = `${req.params.id}.jpg`;
   const currentDirectory = process.cwd(); //like a pwd in bash.
@@ -20,6 +21,7 @@ const getThunb = (req, res) => {
 
 const getAllTask = async (req, res) => {
   const data = await TaskSchemas.find({});
+  //  console.log(data);
   res.json(data);
 };
 const getOneTask = async (req, res) => {
@@ -34,16 +36,21 @@ const getOneTask = async (req, res) => {
   }
 };
 const createTask = async (req, res) => {
-  console.log("hi ther");
+  console.log(req.body);
+  const videoFile = req.files.image;
+  const imageFile = req.files.video;
+  if (
+    !imageFile ||
+    !videoFile ||
+    req.body.name == "" ||
+    req.body.description == ""
+  ) {
+    return res.status(400).send("Each field is required");
+  }
   const vidDetails = await TaskSchemas.create({
     name: req.body.name,
     description: req.body.description,
   });
-  const videoFile = req.files.image;
-  const imageFile = req.files.video;
-  if (!imageFile || !videoFile) {
-    return res.status(400).send("Both video files must be uploaded");
-  }
   imageFile.mv(`videos/${vidDetails._id}.mp4`, (error) => {
     if (error) {
       console.error(`Error uploading file 1: ${error}`);
@@ -54,6 +61,16 @@ const createTask = async (req, res) => {
         console.error(`Error uploading file 2: ${error}`);
         return res.status(500).send("Error uploading file 2");
       }
+      //  const convertVideo =   convertVideoFormat(`videos/${vidDetails._id}.mp4`)
+      //    const convertImage = convertImageFormat(`images/${vidDetails._id}.jpg`)
+      //    if (!convertImage && !convertVideo)
+      //  {
+      //      console.log(convertVideo )
+      //      console.log(convertImage)
+      //    res.status(400).send("files are corrupted or something");
+      //      return
+      //   }
+
       res.status(200).send("Files uploaded successfully");
     });
   });
@@ -73,7 +90,6 @@ const updateTask = async (req, res) => {
 };
 const deleteTask = async (req, res) => {
   const { _id: _id } = req.params;
-  console.log(_id);
   const data = await TaskSchemas.findOneAndDelete({ _id: _id });
   res.send(data);
 };
@@ -83,13 +99,19 @@ const login = async (req, res) => {
     const data = await LoginSchemas.findOne({ email: email });
     const result = await comparePassword(password, data.password);
     if (result) {
-      //console.log(data._id);
       const token = sendJwtToken(data._id, data.name);
-      res.send({ token: token, login: true });
-      //console.log("loggedin");
+      res.send({
+        token: token,
+        login: true,
+        msg: "logged in successfully",
+        name: data.name,
+        id: data._id,
+      });
+    } else {
+      res.send({ token: "", login: false, msg: "Credentials are wrong" });
     }
   } catch (err) {
-    res.send({ token: "", login: false });
+    res.send({ token: "", login: false, msg: "Issue on server side" });
   }
 };
 const signup = async (req, res) => {
@@ -103,7 +125,6 @@ const signup = async (req, res) => {
     });
     if (user) {
       res.json({ signup: true });
-      console.log(user);
     } else {
       res.send({ signup: false });
     }

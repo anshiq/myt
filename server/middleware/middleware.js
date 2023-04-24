@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const sendJwtToken = (_id, name) => {
-  let secret = process.env.jwt_sec;
+  let secret = process.env.jwt_sec || "hulehue";
   data = {
     id: _id,
     name: name,
@@ -18,7 +18,7 @@ const verifyToken = (req, res, next) => {
     req.user = decode.id;
     next();
   } else {
-    res.send("failed to authenticate.");
+    res.send({exist: false });
   }
 };
 const encryptPassword = async (password) => {
