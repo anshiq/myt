@@ -1,11 +1,30 @@
 "use client";
 import uploadVideo from "@/lib/uploadVideo";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 import { useState } from "react";
 function Upload() {
+  const route = useRouter()
   const [image, setImage] = useState([]);
   const [video, setVideo] = useState([]);
-  const [details, setDetails] = useState({ title: "", description: "" });
+  const [details, setDetails] = useState({
+    title: "",
+    description: "",
+    token: "",
+  });
+  const RedirectLogin = ()=>{
+    localStorage.removeItem("myytkey")
+    route.push('/login')
+  }
+  useEffect(() => {
+    const token: string | null = localStorage.getItem("myytkey");
+    if (token) {
+      const tokenData: tokenDetails = JSON.parse(token);
+      setDetails((prevData) => ({ ...prevData, token: tokenData.token }));
+    }else{
+      RedirectLogin()
+    }
+  }, []);
   const handleFileChange = (e: any) => {
     //    console.log(e.target.files[0])
     //    console.log(e.target.name)
@@ -24,7 +43,7 @@ function Upload() {
     formdata.append("description", details.description);
     formdata.append("image", image);
     formdata.append("video", video);
-    uploadVideo(formdata);
+    uploadVideo(formdata, details.token);
   };
   return (
     <form className="flex flex-col justify-center " onSubmit={handleSubmit}>
@@ -41,7 +60,7 @@ function Upload() {
         onChange={handleDetails}
         name="title"
         type="text"
-      />
+        />
       <br className="my-2" />
       <label> description here</label>
       <input
@@ -50,7 +69,7 @@ function Upload() {
         onChange={handleDetails}
         name="description"
         type="text"
-      />
+        />
       <br className="my-2" />
       <button type="submit"> Publish</button>
     </form>

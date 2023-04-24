@@ -5,11 +5,11 @@ type videoDetails={
   __v: number
 }
 type tokenDetails = {
-  name: string,
+  token: string,
   login: boolean,
   msg: string,
   name: string,
-  id: string
+
 }
 
 type userDetails = {

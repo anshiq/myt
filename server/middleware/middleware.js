@@ -10,11 +10,12 @@ const sendJwtToken = (_id, name) => {
   return token;
 };
 const verifyToken = (req, res, next) => {
-  const { token } = req.body;
+  const { token } = req.headers;
+  console.log(token)
   if (token) {
-    const secret = process.env.jwt_sec;
+    const secret = process.env.jwt_sec || "hulehue";
     const decode = jwt.verify(token, secret);
-    console.log(decode.name);
+    console.log(decode.id);
     req.user = decode.id;
     next();
   } else {

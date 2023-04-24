@@ -14,7 +14,7 @@ app.use(express.json({}));
 app.use(express.urlencoded({ extended: true }));
 app.use("/api", router);
 app.use("/auth", verifyToken, authRouter);
-app.use("/upload", authUploadRouter);
+app.use("/upload",verifyToken ,authUploadRouter);
 const start = async () => {
   try {
     await connect("mongodb://127.0.0.1:27017/notesapp");

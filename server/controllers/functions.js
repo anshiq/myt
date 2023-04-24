@@ -6,6 +6,7 @@ const {
   comparePassword,
   sendJwtToken,
 } = require("../middleware/middleware");
+const { trace } = require("console");
 // const { convertVideoFormat, convertImageFormat } = require("../middleware/fileFormatCheck");
 const getThunb = (req, res) => {
   let fileName = `${req.params.id}.jpg`;
@@ -78,6 +79,8 @@ const createTask = async (req, res) => {
 const updateTask = async (req, res) => {
   const { _id: _id } = req.params;
   const { name, description } = req.body;
+  try {
+    
   const data = await TaskSchemas.findOneAndUpdate(
     { _id: _id },
     { name: name, description: description },
@@ -87,6 +90,9 @@ const updateTask = async (req, res) => {
     }
   );
   res.send(data);
+  } catch (error) {
+  res.send({existTask: false})  
+  }
 };
 const deleteTask = async (req, res) => {
   const { _id: _id } = req.params;
@@ -136,6 +142,7 @@ const resetPass = async (req, res) => {
   return true;
 };
 const getUserDetails = async (req, res) => {
+  try {
   const user = await LoginSchemas.findOne({ _id: req.user });
   if (user) {
     const data = {
@@ -145,6 +152,9 @@ const getUserDetails = async (req, res) => {
     res.send(data);
   } else {
     res.send({ exist: false });
+  }
+  } catch (error) {
+   res.send(({exist: false}))  
   }
 };
 module.exports = {
