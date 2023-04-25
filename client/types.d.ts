@@ -2,6 +2,7 @@ type videoDetails={
   name: string,
   description: string,
   _id: string,
+  userId:string
   __v: number
 }
 type tokenDetails = {
@@ -17,3 +18,5 @@ type userDetails = {
   email: string,
 
 }
+
+

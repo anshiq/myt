@@ -142,14 +142,12 @@ const resetPass = async (req, res) => {
   return true;
 };
 const getUserVideos = async (req, res) => {
+  console.log(req.user)
   try {
     const userVideo = await TaskSchemas.find({ userId: req.user });
     if (userVideo) {
-      const data = {
-        videos: userVideo,
-        exist: true,
-      };
-      res.send(data);
+console.log(userVideo)    
+      res.send(userVideo);
     } else {
       res.send({ exist: false });
     }
