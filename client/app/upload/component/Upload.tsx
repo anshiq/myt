@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { useState } from "react";
 function Upload() {
-  const route = useRouter()
+  const route = useRouter();
   const [image, setImage] = useState([]);
   const [video, setVideo] = useState([]);
   const [details, setDetails] = useState({
@@ -12,17 +12,17 @@ function Upload() {
     description: "",
     token: "",
   });
-  const RedirectLogin = ()=>{
-    localStorage.removeItem("myytkey")
-    route.push('/login')
-  }
+  const RedirectLogin = () => {
+    localStorage.removeItem("myytkey");
+    route.push("/login");
+  };
   useEffect(() => {
     const token: string | null = localStorage.getItem("myytkey");
     if (token) {
       const tokenData: tokenDetails = JSON.parse(token);
       setDetails((prevData) => ({ ...prevData, token: tokenData.token }));
-    }else{
-      RedirectLogin()
+    } else {
+      RedirectLogin();
     }
   }, []);
   const handleFileChange = (e: any) => {
@@ -60,7 +60,7 @@ function Upload() {
         onChange={handleDetails}
         name="title"
         type="text"
-        />
+      />
       <br className="my-2" />
       <label> description here</label>
       <input
@@ -69,7 +69,7 @@ function Upload() {
         onChange={handleDetails}
         name="description"
         type="text"
-        />
+      />
       <br className="my-2" />
       <button type="submit"> Publish</button>
     </form>

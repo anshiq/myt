@@ -13,14 +13,13 @@ export default function login() {
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  const token:tokenDetails =  await Login(creds.email,creds.password)
-    console.log(token)
-    if (token.login==true){
-     localStorage.setItem("myytkey",JSON.stringify(token))
-      alert(token.msg)
-    }
-    else{
-alert(token.msg)
+    const token: tokenDetails = await Login(creds.email, creds.password);
+    console.log(token);
+    if (token.login == true) {
+      localStorage.setItem("myytkey", JSON.stringify(token));
+      alert(token.msg);
+    } else {
+      alert(token.msg);
     }
   };
   return (

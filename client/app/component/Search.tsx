@@ -15,7 +15,7 @@ function Search({}: Props) {
     // code goes here
   };
   return (
-    <form onSubmit={handleSubmit} className="flex flex-row ml-2">
+    <form onSubmit={handleSubmit} className="flex flex-row mr-4">
       <input
         className="w-full"
         onChange={handleSeach}

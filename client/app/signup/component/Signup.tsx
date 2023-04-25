@@ -19,22 +19,19 @@ export default function Signup() {
     }));
     console.log(creds);
   };
-  const handleSubmit =  async(e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!(creds.password == creds.repassword && creds.password.length >= 8)) {
       alert("password is not same or length is < 8");
     }
-    const signup =  await SignUp(creds.name, creds.email,creds.password)
-    console.log(signup)
- 
-    if(signup.signup ==true){
-      alert("hule created account successsfully")
-    }
-    else{
+    const signup = await SignUp(creds.name, creds.email, creds.password);
+    console.log(signup);
 
-      alert("unable to create account")
+    if (signup.signup == true) {
+      alert("hule created account successsfully");
+    } else {
+      alert("unable to create account");
     }
-
   };
   return (
     <form
