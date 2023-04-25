@@ -24,12 +24,15 @@ function Navbar() {
           <Search />
         </div>
         <div className={showMenu === true ? "flex " : "hidden"}>
-      <div onClick={()=>setShowMenu(!showMenu)} className="mt-2 h-full fixed left-0 w-full  sm:top-11 top-10 ">
+          <div
+            onClick={() => setShowMenu(!showMenu)}
+            className="mt-2 h-full fixed left-0 w-full  sm:top-11 top-10 "
+          >
             <div className="flex flex-col  items-center justify-between h-full w-56  bg-red-600">
-          <SideMenu />
+              <SideMenu />
+            </div>
+          </div>
         </div>
-        </div>
-      </div>
       </nav>
     </>
   );

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState, FormEvent } from "react";
 
 export default function Signup() {
-  const route = useRouter()
+  const route = useRouter();
   const [creds, setCreds] = useState({
     name: "",
     email: "",
@@ -31,8 +31,7 @@ export default function Signup() {
 
     if (signup.signup == true) {
       alert("hule created account successsfully");
-      route.push('/login')
-      
+      route.push("/login");
     } else {
       alert("unable to create account");
     }

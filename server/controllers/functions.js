@@ -37,7 +37,7 @@ const getOneTask = async (req, res) => {
   }
 };
 const createTask = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body,req.user);
   const videoFile = req.files.image;
   const imageFile = req.files.video;
   if (
@@ -51,6 +51,7 @@ const createTask = async (req, res) => {
   const vidDetails = await TaskSchemas.create({
     name: req.body.name,
     description: req.body.description,
+    userId: req.user,
   });
   imageFile.mv(`videos/${vidDetails._id}.mp4`, (error) => {
     if (error) {
@@ -80,18 +81,17 @@ const updateTask = async (req, res) => {
   const { _id: _id } = req.params;
   const { name, description } = req.body;
   try {
-    
-  const data = await TaskSchemas.findOneAndUpdate(
-    { _id: _id },
-    { name: name, description: description },
-    {
-      new: true,
-      runValidators: true,
-    }
-  );
-  res.send(data);
+    const data = await TaskSchemas.findOneAndUpdate(
+      { _id: _id },
+      { name: name, description: description },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    res.send(data);
   } catch (error) {
-  res.send({existTask: false})  
+    res.send({ existTask: false });
   }
 };
 const deleteTask = async (req, res) => {
@@ -141,20 +141,20 @@ const signup = async (req, res) => {
 const resetPass = async (req, res) => {
   return true;
 };
-const getUserDetails = async (req, res) => {
+const getUserVideos = async (req, res) => {
   try {
-  const user = await LoginSchemas.findOne({ _id: req.user });
-  if (user) {
-    const data = {
-      name: user.name,
-      exist: true,
-    };
-    res.send(data);
-  } else {
-    res.send({ exist: false });
-  }
+    const userVideo = await TaskSchemas.find({ userId: req.user });
+    if (userVideo) {
+      const data = {
+        videos: userVideo,
+        exist: true,
+      };
+      res.send(data);
+    } else {
+      res.send({ exist: false });
+    }
   } catch (error) {
-   res.send(({exist: false}))  
+    res.send({ exist: false });
   }
 };
 module.exports = {
@@ -166,6 +166,6 @@ module.exports = {
   signup,
   login,
   resetPass,
-  getUserDetails,
+  getUserVideos,
   getThunb,
 };

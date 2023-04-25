@@ -11,6 +11,9 @@ const TaskSchema = new mongoose.Schema({
     trim: true,
     maxlength: [120, "dscription can not be more than 120 characters"],
   },
+  userId: {
+    type: String,
+  },
 });
 const LoginSchema = new mongoose.Schema({
   email: {

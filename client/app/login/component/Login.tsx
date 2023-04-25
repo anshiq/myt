@@ -1,10 +1,10 @@
 "use client";
 import login from "@/lib/Login";
 import { useRouter } from "next/navigation";
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Login() {
-  const route = useRouter()
+  const route = useRouter();
   const [creds, setCreds] = useState({ email: "", password: "" });
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -13,10 +13,10 @@ export default function Login() {
       [name]: value,
     }));
   };
- useEffect(() => {
+  useEffect(() => {
     const token: string | null = localStorage.getItem("myytkey");
     if (token) {
-      route.push('/')
+      route.push("/");
     }
   }, []);
 
@@ -27,7 +27,7 @@ export default function Login() {
     if (token.login == true) {
       localStorage.setItem("myytkey", JSON.stringify(token));
       alert(token.msg);
-     window.location.replace("/")
+      window.location.replace("/");
     } else {
       alert(token.msg);
     }
