@@ -11,7 +11,6 @@ const sendJwtToken = (_id, name) => {
 };
 const verifyToken = (req, res, next) => {
   const { token } = req.headers;
-  console.log(token);
   if (token) {
     const secret = process.env.jwt_sec || "hulehue";
     const decode = jwt.verify(token, secret);

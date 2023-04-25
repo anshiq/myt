@@ -9,7 +9,7 @@ const {
   login,
   resetPass,
   getUserVideos,
-  getThunb,
+  getThunb,searchRecommendation
 } = require("../controllers/functions");
 const router = express.Router();
 const authRouter = express.Router();
@@ -20,7 +20,8 @@ router.route("/signup").post(signup);
 router.route("/reset").post(resetPass);
 router.route("/thumb/:id").get(getThunb);
 router.route("/one/:id").get(getOneTask);
-authRouter.route("/change/:_id").patch(updateTask).delete(deleteTask);
+router.route('/search').post(searchRecommendation)
+authRouter.route("/change").patch(updateTask).delete(deleteTask);
 authRouter.route("/uservideos").post(getUserVideos);
 authUploadRouter.route("/").post(createTask);
 module.exports = { router, authRouter, authUploadRouter };

@@ -16,7 +16,10 @@ type tokenDetails = {
 type userDetails = {
   name : string ,
   email: string,
-
 }
-
+type searchRecommendationDetails = {
+  name: string ,
+  id: string,
+  error: boolean
+}
 

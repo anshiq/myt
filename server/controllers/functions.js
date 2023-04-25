@@ -25,6 +25,17 @@ const getAllTask = async (req, res) => {
   //  console.log(data);
   res.json(data);
 };
+const  searchRecommendation = async (req,res) =>{
+  try {
+  const recomendation =await TaskSchemas.find({name: req.body.inputText})
+    console.log(recomendation,req.body.inputText)
+    res.send(recomendation)
+  } catch (error) {
+    res.send({error: true}) 
+  }
+
+
+}
 const getOneTask = async (req, res) => {
   const fileName = `${req.params.id}.mp4`; // Get the file name from the request parameter
   const currentDirectory = process.cwd(); //like a pwd in bash.
@@ -95,9 +106,14 @@ const updateTask = async (req, res) => {
   }
 };
 const deleteTask = async (req, res) => {
-  const { _id: _id } = req.params;
-  const data = await TaskSchemas.findOneAndDelete({ _id: _id });
-  res.send(data);
+  const { id: id } = req.headers;
+  console.log(id)
+  try {
+  const data = await TaskSchemas.findOneAndDelete({ _id: id,userId: req.user });
+  res.send({delete: true, name: data.name});
+  } catch (error) {
+    res.send({delete: false, name: ""}) 
+  }
 };
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -166,4 +182,5 @@ module.exports = {
   resetPass,
   getUserVideos,
   getThunb,
+  searchRecommendation
 };
