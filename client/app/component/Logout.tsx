@@ -6,17 +6,20 @@ function Logout() {
   const route = useRouter();
   const RedirectLogin = () => {
     localStorage.removeItem("myytkey");
-    alert("hule");
-    route.push("/");
+   window.location.reload()
   };
   useEffect(() => {
     const token: string | null = localStorage.getItem("myytkey");
     if (token) {
       setLogoutButtonVisibility(true);
     }
+    else{
+      setLogoutButtonVisibility(false)
+    }
   }, []);
 
   return (
+    <>
     <button
       onClick={RedirectLogin}
       className={
@@ -27,6 +30,18 @@ function Logout() {
     >
       Logout
     </button>
+<button
+      onClick={()=>route.push('/upload')}
+      className={
+        logoutButtonVisibility == true
+          ? "flex h-10 bg-red-900 justify-center items-center w-5/6"
+          : "hidden"
+      }
+    >
+        Upload
+    </button>
+
+    </>
   );
 }
 

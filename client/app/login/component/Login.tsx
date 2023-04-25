@@ -1,9 +1,9 @@
 "use client";
-import Login from "@/lib/Login";
+import login from "@/lib/Login";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 
-export default function login() {
+export default function Login() {
   const route = useRouter()
   const [creds, setCreds] = useState({ email: "", password: "" });
   const handleChange = (e: any) => {
@@ -13,14 +13,21 @@ export default function login() {
       [name]: value,
     }));
   };
+ useEffect(() => {
+    const token: string | null = localStorage.getItem("myytkey");
+    if (token) {
+      route.push('/')
+    }
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const token: tokenDetails = await Login(creds.email, creds.password);
+    const token: tokenDetails = await login(creds.email, creds.password);
     console.log(token);
     if (token.login == true) {
       localStorage.setItem("myytkey", JSON.stringify(token));
       alert(token.msg);
-      route.push('/')
+     window.location.replace("/")
     } else {
       alert(token.msg);
     }
@@ -42,6 +49,7 @@ export default function login() {
       <input
         value={creds.password}
         name="password"
+        type="password"
         onChange={handleChange}
         placeholder="Enter your Password"
       />

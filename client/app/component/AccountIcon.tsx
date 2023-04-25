@@ -12,6 +12,10 @@ function AccountIcon() {
       const tokenDetails: tokenDetails = JSON.parse(token);
       setAccountDetails({ name: tokenDetails.name, url: "/user" });
     }
+    else{
+
+      setAccountDetails({ name: 'Login', url: "/login" });
+    }
   }, []);
   return (
     <Link
