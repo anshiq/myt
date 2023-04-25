@@ -1,8 +1,10 @@
 "use client";
 import Login from "@/lib/Login";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 export default function login() {
+  const route = useRouter()
   const [creds, setCreds] = useState({ email: "", password: "" });
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -18,6 +20,7 @@ export default function login() {
     if (token.login == true) {
       localStorage.setItem("myytkey", JSON.stringify(token));
       alert(token.msg);
+      route.push('/')
     } else {
       alert(token.msg);
     }
