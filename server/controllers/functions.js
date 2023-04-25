@@ -25,17 +25,15 @@ const getAllTask = async (req, res) => {
   //  console.log(data);
   res.json(data);
 };
-const  searchRecommendation = async (req,res) =>{
+const searchRecommendation = async (req, res) => {
   try {
-  const recomendation =await TaskSchemas.find({name: req.body.inputText})
-    console.log(recomendation,req.body.inputText)
-    res.send(recomendation)
+    const recomendation = await TaskSchemas.find({ name: req.body.inputText });
+    console.log(recomendation, req.body.inputText);
+    res.send(recomendation);
   } catch (error) {
-    res.send({error: true}) 
+    res.send({ error: true });
   }
-
-
-}
+};
 const getOneTask = async (req, res) => {
   const fileName = `${req.params.id}.mp4`; // Get the file name from the request parameter
   const currentDirectory = process.cwd(); //like a pwd in bash.
@@ -107,12 +105,15 @@ const updateTask = async (req, res) => {
 };
 const deleteTask = async (req, res) => {
   const { id: id } = req.headers;
-  console.log(id)
+  console.log(id);
   try {
-  const data = await TaskSchemas.findOneAndDelete({ _id: id,userId: req.user });
-  res.send({delete: true, name: data.name});
+    const data = await TaskSchemas.findOneAndDelete({
+      _id: id,
+      userId: req.user,
+    });
+    res.send({ delete: true, name: data.name });
   } catch (error) {
-    res.send({delete: false, name: ""}) 
+    res.send({ delete: false, name: "" });
   }
 };
 const login = async (req, res) => {
@@ -158,11 +159,11 @@ const resetPass = async (req, res) => {
   return true;
 };
 const getUserVideos = async (req, res) => {
-  console.log(req.user)
+  console.log(req.user);
   try {
     const userVideo = await TaskSchemas.find({ userId: req.user });
     if (userVideo) {
-console.log(userVideo)    
+      console.log(userVideo);
       res.send(userVideo);
     } else {
       res.send({ exist: false });
@@ -182,5 +183,5 @@ module.exports = {
   resetPass,
   getUserVideos,
   getThunb,
-  searchRecommendation
+  searchRecommendation,
 };
