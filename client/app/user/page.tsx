@@ -3,7 +3,7 @@ import UserDashboard from "./component/UserDashBoard";
 function page() {
   return (
     <div className="mt-12 pt-2 ">
-      <UserDashboard/>
+      <UserDashboard />
     </div>
   );
 }
