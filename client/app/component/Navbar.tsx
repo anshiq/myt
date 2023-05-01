@@ -13,7 +13,7 @@ function Navbar() {
         <div className="mx-2">
           <VscMenu onClick={() => setShowMenu(!showMenu)} size="2rem" />
         </div>
-        <div className="flex  flex-row bg-green-500 justify-between w-full">
+        <div className="flex border-gray-900 border-2  h-full flex-row bg-green-500 justify-between w-full">
           <Image
             width={90}
             height={90}
@@ -21,7 +21,9 @@ function Navbar() {
             className="sm:h-12 h-10 sm:w-auto w-12"
             src="/titleicon.png"
           />
-          <Search />
+          <div className="flex  flex-row border-gray-900 border-2 items-center justify-center ">
+            <Search />
+          </div>
         </div>
         <div className={showMenu === true ? "flex " : "hidden"}>
           <div

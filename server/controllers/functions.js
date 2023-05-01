@@ -6,7 +6,6 @@ const {
   comparePassword,
   sendJwtToken,
 } = require("../middleware/middleware");
-const { trace } = require("console");
 // const { convertVideoFormat, convertImageFormat } = require("../middleware/fileFormatCheck");
 const getThunb = (req, res) => {
   let fileName = `${req.params.id}.jpg`;
@@ -27,7 +26,15 @@ const getAllTask = async (req, res) => {
 };
 const searchRecommendation = async (req, res) => {
   try {
-    const recomendation = await TaskSchemas.find({ name: req.body.inputText });
+    const recomendation = await TaskSchemas.find(
+
+      {
+  $or: [
+    { name: { $regex: new RegExp(req.body.inputText, 'i') } },
+    { description: { $regex: new RegExp(req.body.inputText, 'i') } }
+  ]
+}
+    );
     console.log(recomendation, req.body.inputText);
     res.send(recomendation);
   } catch (error) {
@@ -51,9 +58,9 @@ const createTask = async (req, res) => {
   const imageFile = req.files.video;
   if (
     !imageFile ||
-    !videoFile ||
-    req.body.name == "" ||
-    req.body.description == ""
+      !videoFile ||
+      req.body.name == "" ||
+      req.body.description == ""
   ) {
     return res.status(400).send("Each field is required");
   }

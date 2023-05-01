@@ -2,7 +2,7 @@ import UserVideos from "@/lib/UserVideos";
 import React, { useEffect, useState } from "react";
 import VideoCard from "./VideoCard";
 function Videos() {
-  const [content, setContent] = useState([]);
+  const [content, setContent]: any = useState([]);
   useEffect(() => {
     const localToken: string | null = localStorage.getItem("myytkey");
     if (localToken) {
