@@ -20,12 +20,9 @@ function Search() {
           return;
         }
         if (response.length > 0) {
-          if(response[0].name==search){
-
+          if (response[0].name == search) {
             setSearchRecommendationBox(false);
-          }
-          else{
-
+          } else {
             setSearchRecommendationBox(true);
           }
           const content = response.map((eachResponse: any) => (
@@ -39,7 +36,7 @@ function Search() {
               >
                 {eachResponse.name}
               </Link>
-              </>
+            </>
           ));
 
           const element = <>{content}</>;
@@ -49,15 +46,13 @@ function Search() {
           } else {
             setSearchRecommendation(<div className="hidden"></div>);
           }
-        } else{
-
-          setSearchRecommendationBox(false)
+        } else {
+          setSearchRecommendationBox(false);
         }
       };
       getRecommendation();
     } else {
-
-      setSearchRecommendationBox(false)
+      setSearchRecommendationBox(false);
     }
   }, [search.length]);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -73,13 +68,15 @@ function Search() {
         value={search}
         type="text"
         placeholder="Search"
-        />
+      />
       <button type="submit">Search</button>
       <div
-        onClick={ ()=> setSearchRecommendationBox(false) }
+        onClick={() => setSearchRecommendationBox(false)}
         className={`${
-searchRecommendationBox ? "absolute   h-72 top-14 flex flex-col  bg-white w-3/4" : "hidden"
-}  `}
+          searchRecommendationBox
+            ? "absolute   h-72 top-14 flex flex-col  bg-white w-3/4"
+            : "hidden"
+        }  `}
       >
         {searchRecommendation}
       </div>
