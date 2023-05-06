@@ -14,7 +14,7 @@ const verifyToken = (req, res, next) => {
   if (token) {
     const secret = process.env.jwt_sec || "hulehue";
     const decode = jwt.verify(token, secret);
-    console.log(decode.id);
+    // console.log(decode.id);
     req.user = decode.id;
     next();
   } else {

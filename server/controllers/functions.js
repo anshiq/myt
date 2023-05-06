@@ -32,10 +32,20 @@ const searchRecommendation = async (req, res) => {
         { description: { $regex: new RegExp(req.body.inputText, "i") } },
       ],
     });
-    console.log(recomendation, req.body.inputText);
+    // console.log(recomendation, req.body.inputText);
     res.send(recomendation);
   } catch (error) {
     res.send({ error: true });
+  }
+};
+const getOneTaskDetails = async (req, res) => {
+  try {
+    const id = req.body.id;
+    // console.log(id)
+    const oneTaskDetails = await TaskSchemas.findOne({ _id: id });
+    res.send(oneTaskDetails).status(200);
+  } catch (error) {
+    res.send("task not found").status(400);
   }
 };
 const getOneTask = async (req, res) => {
@@ -109,7 +119,7 @@ const updateTask = async (req, res) => {
 };
 const deleteTask = async (req, res) => {
   const { id: id } = req.headers;
-  console.log(id);
+  // console.log(id);
   try {
     const data = await TaskSchemas.findOneAndDelete({
       _id: id,
@@ -159,15 +169,18 @@ const signup = async (req, res) => {
     res.send({ signup: false });
   }
 };
-const resetPass = async (req, res) => {
-  return true;
-};
 const getUserVideos = async (req, res) => {
-  console.log(req.user);
+  let user;
+  if (req.user === undefined) {
+    user = req.body.user;
+  } else {
+    user = req.user;
+  }
+  // console.log(user)
   try {
-    const userVideo = await TaskSchemas.find({ userId: req.user });
+    const userVideo = await TaskSchemas.find({ userId: user });
     if (userVideo) {
-      console.log(userVideo);
+      // console.log(userVideo);
       res.send(userVideo);
     } else {
       res.send({ exist: false });
@@ -184,8 +197,8 @@ module.exports = {
   deleteTask,
   signup,
   login,
-  resetPass,
   getUserVideos,
   getThunb,
   searchRecommendation,
+  getOneTaskDetails,
 };

@@ -14,10 +14,14 @@ function VideoCard({ eachVideo, token }: Props) {
     if (response) {
       if (response.delete) {
         alert(response.name + " successfully deleted");
+        window.location.replace("/user");
       } else {
         alert("the giving video don't exist ");
         window.location.replace("/user");
       }
+    }else{
+ localStorage.removeItem('myytkey')
+        window.location.replace("/login");
     }
   };
 
