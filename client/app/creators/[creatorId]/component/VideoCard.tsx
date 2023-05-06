@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
-type Props = {}
+type Props = {};
 
 function VideoCard({}: Props) {
-  return (
-    <div>VideoCard</div>
-  )
+  return <div>VideoCard</div>;
 }
 
-export default VideoCard
+export default VideoCard;

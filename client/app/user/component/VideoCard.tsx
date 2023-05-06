@@ -19,9 +19,9 @@ function VideoCard({ eachVideo, token }: Props) {
         alert("the giving video don't exist ");
         window.location.replace("/user");
       }
-    }else{
- localStorage.removeItem('myytkey')
-        window.location.replace("/login");
+    } else {
+      localStorage.removeItem("myytkey");
+      window.location.replace("/login");
     }
   };
 

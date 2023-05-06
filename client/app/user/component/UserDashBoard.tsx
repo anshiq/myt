@@ -12,8 +12,8 @@ function UserDashboard() {
   useEffect(() => {
     const localToken: string | null = localStorage.getItem("myytkey");
     if (!localToken) {
-    localStorage.removeItem("myytkey");
-    route.push("/login");
+      localStorage.removeItem("myytkey");
+      route.push("/login");
       return;
     } else {
       const tokenData: tokenDetails = JSON.parse(localToken);

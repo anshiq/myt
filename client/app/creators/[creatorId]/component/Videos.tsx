@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
-type Props = {}
+type Props = {};
 
 function Videos({}: Props) {
-  return (
-    <div>Videos</div>
-  )
+  return <div>Videos</div>;
 }
 
-export default Videos
+export default Videos;

@@ -5,8 +5,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 function Upload() {
   const route = useRouter();
-  const [image, setImage]:any = useState([]);
-  const [video, setVideo]:any = useState([]);
+  const [image, setImage]: any = useState([]);
+  const [video, setVideo]: any = useState([]);
   const [details, setDetails] = useState({
     title: "",
     description: "",
@@ -14,9 +14,9 @@ function Upload() {
   useEffect(() => {
     const token: string | null = localStorage.getItem("myytkey");
     if (token) {
-    } else { 
-    localStorage.removeItem("myytkey");
-    route.push("/login");
+    } else {
+      localStorage.removeItem("myytkey");
+      route.push("/login");
     }
   });
   const handleFileChange = (e: any) => {
@@ -29,19 +29,19 @@ function Upload() {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const token:string | null = localStorage.getItem('myytkey')
-    if(token){
-    const tokenDetails : tokenDetails = JSON.parse(token)
-    const formdata = new FormData();
-    formdata.append("name", details.title);
-    formdata.append("description", details.description);
-    formdata.append("image", image);
-    formdata.append("video", video);
-    uploadVideo(formdata, tokenDetails.token);
+    const token: string | null = localStorage.getItem("myytkey");
+    if (token) {
+      const tokenDetails: tokenDetails = JSON.parse(token);
+      const formdata = new FormData();
+      formdata.append("name", details.title);
+      formdata.append("description", details.description);
+      formdata.append("image", image);
+      formdata.append("video", video);
+      uploadVideo(formdata, tokenDetails.token);
     } else {
-    localStorage.removeItem("myytkey");
-    route.push("/login");
-      return
+      localStorage.removeItem("myytkey");
+      route.push("/login");
+      return;
     }
   };
   return (

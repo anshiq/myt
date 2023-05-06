@@ -3,7 +3,7 @@ import Link from "next/link";
 type Params = {
   videoDetails: videoDetails;
 };
-export default function Video({ videoDetails}: Params) {
+export default function Video({ videoDetails }: Params) {
   return (
     <>
       <div className="w-full items-center  justify-center">
@@ -12,9 +12,14 @@ export default function Video({ videoDetails}: Params) {
           className="sm:w-5/6 w-full mx-auto  h-auto"
           controls
         ></video>
-      <div 
-          className="sm:w-5/6 w-full mx-auto  h-auto pt-3"
-        > <h1 className="font-bold">{videoDetails.name}</h1> <p> {videoDetails.description}</p> <p>User:<Link href='/'>{videoDetails.userId}</Link> </p> </div>
+        <div className="sm:w-5/6 w-full mx-auto  h-auto pt-3">
+          {" "}
+          <h1 className="font-bold">{videoDetails.name}</h1>{" "}
+          <p> {videoDetails.description}</p>{" "}
+          <p>
+            User:<Link href="/">{videoDetails.userId}</Link>{" "}
+          </p>{" "}
+        </div>
       </div>
     </>
   );
