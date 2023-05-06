@@ -11,7 +11,7 @@ const getThunb = (req, res) => {
   let fileName = `${req.params.id}.jpg`;
   const currentDirectory = process.cwd(); //like a pwd in bash.
   const filePath = path.join(`${currentDirectory}/images`, fileName); // Construct the file path
-  //console.log(filePath)
+  ////console.log(filePath)
   if (fs.existsSync(filePath)) {
     res.sendFile(filePath);
   } else {
@@ -21,7 +21,7 @@ const getThunb = (req, res) => {
 
 const getAllTask = async (req, res) => {
   const data = await TaskSchemas.find({});
-  //  console.log(data);
+  //  //console.log(data);
   res.json(data);
 };
 const searchRecommendation = async (req, res) => {
@@ -32,7 +32,7 @@ const searchRecommendation = async (req, res) => {
         { description: { $regex: new RegExp(req.body.inputText, "i") } },
       ],
     });
-    // console.log(recomendation, req.body.inputText);
+    // //console.log(recomendation, req.body.inputText);
     res.send(recomendation);
   } catch (error) {
     res.send({ error: true });
@@ -41,7 +41,7 @@ const searchRecommendation = async (req, res) => {
 const getOneTaskDetails = async (req, res) => {
   try {
     const id = req.body.id;
-    // console.log(id)
+    // //console.log(id)
     const oneTaskDetails = await TaskSchemas.findOne({ _id: id });
     res.send(oneTaskDetails).status(200);
   } catch (error) {
@@ -60,7 +60,7 @@ const getOneTask = async (req, res) => {
   }
 };
 const createTask = async (req, res) => {
-  // console.log(req.body,req.user);
+  // //console.log(req.body,req.user);
   const videoFile = req.files.image;
   const imageFile = req.files.video;
   if (
@@ -90,8 +90,8 @@ const createTask = async (req, res) => {
       //    const convertImage = convertImageFormat(`images/${vidDetails._id}.jpg`)
       //    if (!convertImage && !convertVideo)
       //  {
-      //      console.log(convertVideo )
-      //      console.log(convertImage)
+      //      //console.log(convertVideo )
+      //      //console.log(convertImage)
       //    res.status(400).send("files are corrupted or something");
       //      return
       //   }
@@ -119,7 +119,7 @@ const updateTask = async (req, res) => {
 };
 const deleteTask = async (req, res) => {
   const { id: id } = req.headers;
-  // console.log(id);
+  // //console.log(id);
   try {
     const data = await TaskSchemas.findOneAndDelete({
       _id: id,
@@ -176,11 +176,9 @@ const getUserVideos = async (req, res) => {
   } else {
     user = req.user;
   }
-  // console.log(user)
   try {
     const userVideo = await TaskSchemas.find({ userId: user });
     if (userVideo) {
-      // console.log(userVideo);
       res.send(userVideo);
     } else {
       res.send({ exist: false });

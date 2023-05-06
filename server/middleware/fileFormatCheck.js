@@ -4,12 +4,12 @@ const Jimp = require("jimp");
 const convertVideoFormat = (url) => {
   const currentDirectory = process.cwd();
   const filePath = path.join(currentDirectory, url);
-  console.log("iam called");
+  //console.log("iam called");
   let converted = false;
-  console.log(filePath);
+  //console.log(filePath);
   const proc = ffmpeg(filePath).ffprobe((err, metadata) => {
     if (err) {
-      console.log(err);
+      //console.log(err);
       converted = false;
     }
   });
@@ -18,11 +18,11 @@ const convertVideoFormat = (url) => {
     .output(filePath)
     .on("end", () => {
       converted = true;
-      console.log(converted);
+      //console.log(converted);
     })
     .on("error", () => {
       converted = false;
-      console.log(converted);
+      //console.log(converted);
     })
     .run();
 
@@ -31,7 +31,7 @@ const convertVideoFormat = (url) => {
 const convertImageFormat = (url) => {
   const currentDirectory = process.cwd();
   const filePath = path.join(currentDirectory, url);
-  console.log("iam called");
+  //console.log("iam called");
   let converted = false;
   Jimp.read(filePath)
     .then((image) => {
@@ -39,7 +39,7 @@ const convertImageFormat = (url) => {
     })
     .catch((err) => {
       converted = false;
-      console.log(err);
+      //console.log(err);
     });
   if (converted === false) return converted;
   Jimp.read(url)
@@ -49,11 +49,11 @@ const convertImageFormat = (url) => {
     })
     .then(() => {
       converted = true;
-      console.log(converted);
+      //console.log(converted);
     })
     .catch((err) => {
       converted = false;
-      console.log(converted);
+      //console.log(converted);
     });
   return converted;
 };
