@@ -7,7 +7,7 @@ function Videos() {
     const localToken: string | null = localStorage.getItem("myytkey");
     if (localToken) {
       const tokenData: tokenDetails = JSON.parse(localToken);
-      console.log(tokenData);
+      //console.log(tokenData);
       const getVideos = async () => {
         const videos: videoDetails[] = await UserVideos(tokenData.token);
         const data = videos.map((eachVideo: videoDetails) => (

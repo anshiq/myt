@@ -10,25 +10,16 @@ function Upload() {
   const [details, setDetails] = useState({
     title: "",
     description: "",
-    token: "",
   });
-  const RedirectLogin = () => {
-    localStorage.removeItem("myytkey");
-    route.push("/login");
-  };
   useEffect(() => {
     const token: string | null = localStorage.getItem("myytkey");
     if (token) {
-      const tokenData: tokenDetails = JSON.parse(token);
-      setDetails((prevData) => ({ ...prevData, token: tokenData.token }));
-    } else {
-      RedirectLogin();
+    } else { 
+    localStorage.removeItem("myytkey");
+    route.push("/login");
     }
-  }, []);
+  });
   const handleFileChange = (e: any) => {
-    //    console.log(e.target.files[0])
-    //    console.log(e.target.name)
-
     if (e.target.name == "image") setImage(e.target.files[0]);
     else if (e.target.name == "video") setVideo(e.target.files[0]);
   };
@@ -38,12 +29,20 @@ function Upload() {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const token:string | null = localStorage.getItem('myytkey')
+    if(token){
+    const tokenDetails : tokenDetails = JSON.parse(token)
     const formdata = new FormData();
     formdata.append("name", details.title);
     formdata.append("description", details.description);
     formdata.append("image", image);
     formdata.append("video", video);
-    uploadVideo(formdata, details.token);
+    uploadVideo(formdata, tokenDetails.token);
+    } else {
+    localStorage.removeItem("myytkey");
+    route.push("/login");
+      return
+    }
   };
   return (
     <form className="flex flex-col justify-center " onSubmit={handleSubmit}>

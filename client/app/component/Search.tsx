@@ -9,7 +9,6 @@ function Search() {
   const [searchRecommendation, setSearchRecommendation]: any = useState([]);
   const handleSeach = (e: any) => {
     setSearch(e.target.value);
-    // console.log(search);
   };
   useEffect(() => {
     if (search.length >= 1) {
@@ -42,7 +41,7 @@ function Search() {
           const element = <>{content}</>;
           if (search.length > 0 && content.length > 0) {
             setSearchRecommendation(element);
-            console.log(content);
+            //console.log(content);
           } else {
             setSearchRecommendation(<div className="hidden"></div>);
           }
@@ -57,7 +56,7 @@ function Search() {
   }, [search.length]);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // console.log(search)
+    // //console.log(search)
     // code goes here
   };
   return (

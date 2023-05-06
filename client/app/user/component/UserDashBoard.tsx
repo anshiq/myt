@@ -9,22 +9,18 @@ function UserDashboard() {
     token: "",
   });
   const route = useRouter();
-  const RedirectLogin = () => {
-    localStorage.removeItem("myytkey");
-    route.push("/login");
-  };
-
   useEffect(() => {
     const localToken: string | null = localStorage.getItem("myytkey");
     if (!localToken) {
-      RedirectLogin();
+    localStorage.removeItem("myytkey");
+    route.push("/login");
       return;
     } else {
       const tokenData: tokenDetails = JSON.parse(localToken);
       setToken({ token: tokenData.token, name: tokenData.name });
-      console.log(Token);
+      //console.log(Token);
     }
-  }, []);
+  });
   return (
     <>
       <h1>{Token.name}</h1>

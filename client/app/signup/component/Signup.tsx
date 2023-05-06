@@ -18,7 +18,7 @@ export default function Signup() {
       ...prevData,
       [name]: value,
     }));
-    console.log(creds);
+    //console.log(creds);
   };
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ export default function Signup() {
       alert("password is not same or length is < 8");
     }
     const signup = await SignUp(creds.name, creds.email, creds.password);
-    console.log(signup);
+    //console.log(signup);
 
     if (signup.signup == true) {
       alert("hule created account successsfully");

@@ -18,12 +18,11 @@ export default function Login() {
     if (token) {
       route.push("/");
     }
-  }, []);
+  });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const token: tokenDetails = await login(creds.email, creds.password);
-    console.log(token);
     if (token.login == true) {
       localStorage.setItem("myytkey", JSON.stringify(token));
       alert(token.msg);
