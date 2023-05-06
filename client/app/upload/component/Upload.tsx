@@ -5,8 +5,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 function Upload() {
   const route = useRouter();
-  const [image, setImage] = useState([]);
-  const [video, setVideo] = useState([]);
+  const [image, setImage]:any = useState([]);
+  const [video, setVideo]:any = useState([]);
   const [details, setDetails] = useState({
     title: "",
     description: "",
