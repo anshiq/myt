@@ -35,10 +35,11 @@ export default function Login() {
     <Suspense fallback={<h1>Loading the login page....</h1>}>
       <form
         onSubmit={handleSubmit}
-        className="flex mb-20 flex-col p-7  w-1/3 "
+        className="flex mb-20 flex-col p-7  border-2 border-gray-500  w-[90%]  sm:w-1/3"
       >
         <label> Email</label>
         <input
+          className="border-[1px] p-1 border-gray-700 "
           value={creds.email}
           name="email"
           onChange={handleChange}
@@ -47,6 +48,7 @@ export default function Login() {
         <br className="my-2" />
         <label> Password </label>
         <input
+          className="border-[1px] p-1 border-gray-700 "
           value={creds.password}
           name="password"
           type="password"
@@ -54,7 +56,7 @@ export default function Login() {
           placeholder="Enter your Password"
         />
         <br className="my-2" />
-        <button type="submit" className="bg-gray-600 p-1.5 mx-auto w-1/3">
+        <button type="submit" className="bg-gray-600 hover:bg-gray-500 p-1.5 mx-auto w-1/3">
           {" "}
           Login
         </button>

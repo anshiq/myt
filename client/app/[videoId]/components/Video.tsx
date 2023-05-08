@@ -15,10 +15,10 @@ export default function Video({ videoDetails }: Params) {
         <div className="sm:w-5/6 w-full mx-auto  h-auto pt-3">
           {" "}
           <h1 className="font-bold">{videoDetails.name}</h1>{" "}
-          <p> {videoDetails.description}</p>{" "}
-          <p>
+          <div> {videoDetails.description}</div>{" "}
+          <div>
             User:<Link href={`/creators/${videoDetails.userId}`}>{videoDetails.userId}</Link>{" "}
-          </p>{" "}
+          </div>{" "}
         </div>
       </div>
     </>

@@ -25,17 +25,16 @@ function Search() {
             setSearchRecommendationBox(true);
           }
           const content = response.map((eachResponse: any) => (
-            <>
               <Link
+              key={eachResponse._id}
                 onClick={() => {
                   setSearch(eachResponse.name);
                 }}
-                className=" ml-2 py-2"
+                className=" ml-2 hover:border-gray-200 py-1 pl-1 my-1 hover:text-blue-600  border-l border-gray-500 "
                 href={`${eachResponse._id}`}
               >
                 {eachResponse.name}
               </Link>
-            </>
           ));
 
           const element = <>{content}</>;
@@ -60,7 +59,7 @@ function Search() {
     // code goes here
   };
   return (
-    <form onSubmit={handleSubmit} className="flex h-full flex-row mr-4">
+    <form onSubmit={handleSubmit} className="flex h-full flex-row mr-1">
       <input
         className="w-full pl-3 h-full"
         onChange={handleSeach}
@@ -68,7 +67,6 @@ function Search() {
         type="text"
         placeholder="Search"
       />
-      <button type="submit">Search</button>
       <div
         onClick={() => setSearchRecommendationBox(false)}
         className={`${

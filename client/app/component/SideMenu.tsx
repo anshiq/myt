@@ -28,10 +28,11 @@ function SideMenu() {
       </div>
       <Link
         className="mb-12 h-24 bg-gray-400 flex justify-center items-center w-[97%]"
-        href="/"
+        href="https://github.com/anshiq/myt"
+        target="_blank"
       >
         {" "}
-        Dev Portfolio
+        Github
       </Link>
     </>
   );
