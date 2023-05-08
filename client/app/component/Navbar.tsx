@@ -1,26 +1,22 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { VscMenu } from "react-icons/vsc";
-import Image from "next/image";
 import Search from "./Search";
 import SideMenu from "./SideMenu";
+import Link from "next/link";
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <>
-      <nav className="flex fixed bg-gray-500-500 py-1 top-0 bg-gray-500 flex-row items-center  w-full">
+      <nav className="flex fixed bg-gray-500-500 py-1 text-center  top-0 bg-gray-500 flex-row items-center  w-full">
         <div className="mx-2">
           <VscMenu onClick={() => setShowMenu(!showMenu)} size="2rem" />
         </div>
         <div className="flex   h-full flex-row bg-gray-500 justify-between w-full">
-          <Image
-            width={90}
-            height={90}
-            alt="My yt"
-            className="sm:h-12 h-10 sm:w-auto w-12"
-            src="/titleicon.png"
-          />
+          <Link href={'/'}  className="sm:h-12 flex text-lg text-center items-center justify-center h-10 sm:w-auto w-12">
+           My yt 
+          </Link>
           <div className="flex  flex-row  items-center justify-center ">
             <Search />
           </div>
