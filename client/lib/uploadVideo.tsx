@@ -1,5 +1,4 @@
 async function uploadVideo( formdata: FormData,token: string) {
-  alert("hule")
   try {
   const response =await fetch("http://127.0.0.1:8080/upload",{
     method: "POST",
@@ -10,6 +9,7 @@ async function uploadVideo( formdata: FormData,token: string) {
   })
   if (response.ok){
     alert("files uploaded successfully")
+   window.location.replace('/user')
   }
     else{
       alert("server side problem")

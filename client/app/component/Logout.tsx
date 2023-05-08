@@ -23,7 +23,7 @@ function Logout() {
         onClick={RedirectLogin}
         className={
           logoutButtonVisibility == true
-            ? "flex h-10 bg-red-900 justify-center items-center w-5/6"
+            ? "flex h-10 bg-gray-500 justify-center items-center w-5/6"
             : "hidden"
         }
       >
@@ -33,7 +33,7 @@ function Logout() {
         onClick={() => route.push("/upload")}
         className={
           logoutButtonVisibility == true
-            ? "flex h-10 bg-red-900 justify-center items-center w-5/6"
+            ? "flex h-10 bg-gray-500 justify-center items-center w-5/6"
             : "hidden"
         }
       >

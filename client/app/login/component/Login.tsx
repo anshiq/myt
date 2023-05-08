@@ -35,7 +35,7 @@ export default function Login() {
     <Suspense fallback={<h1>Loading the login page....</h1>}>
       <form
         onSubmit={handleSubmit}
-        className="flex mb-20 flex-col p-7 border-2  w-1/3 "
+        className="flex mb-20 flex-col p-7  w-1/3 "
       >
         <label> Email</label>
         <input

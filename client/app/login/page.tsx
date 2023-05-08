@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 function page() {
   return (
-    <div className="flex flex-col w-full min-h-screen border-4 border-red-900 justify-center items-center">
+    <div className="flex flex-col w-full min-h-screen  justify-center items-center">
       <Login />
       <Link href={"/signup"}>Signup</Link>
     </div>

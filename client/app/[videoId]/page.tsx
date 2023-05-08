@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-import Link from "next/link";
 import getOneTaskDetails from "@/lib/getOneTaskDetail";
 import Video from "./components/Video";
 import Recommendations from "./components/Recommendations";

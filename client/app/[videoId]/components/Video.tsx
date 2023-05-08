@@ -17,7 +17,7 @@ export default function Video({ videoDetails }: Params) {
           <h1 className="font-bold">{videoDetails.name}</h1>{" "}
           <p> {videoDetails.description}</p>{" "}
           <p>
-            User:<Link href="/">{videoDetails.userId}</Link>{" "}
+            User:<Link href={`/creators/${videoDetails.userId}`}>{videoDetails.userId}</Link>{" "}
           </p>{" "}
         </div>
       </div>

@@ -9,11 +9,11 @@ function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <>
-      <nav className="flex fixed bg-red-500 py-1 top-0  flex-row items-center  w-full">
+      <nav className="flex fixed bg-gray-500-500 py-1 top-0 bg-gray-500 flex-row items-center  w-full">
         <div className="mx-2">
           <VscMenu onClick={() => setShowMenu(!showMenu)} size="2rem" />
         </div>
-        <div className="flex border-gray-900 border-2  h-full flex-row bg-green-500 justify-between w-full">
+        <div className="flex   h-full flex-row bg-gray-500 justify-between w-full">
           <Image
             width={90}
             height={90}
@@ -21,7 +21,7 @@ function Navbar() {
             className="sm:h-12 h-10 sm:w-auto w-12"
             src="/titleicon.png"
           />
-          <div className="flex  flex-row border-gray-900 border-2 items-center justify-center ">
+          <div className="flex  flex-row  items-center justify-center ">
             <Search />
           </div>
         </div>
@@ -30,7 +30,7 @@ function Navbar() {
             onClick={() => setShowMenu(!showMenu)}
             className="mt-2 h-full fixed left-0 w-full  sm:top-11 top-10 "
           >
-            <div className="flex flex-col  items-center justify-between h-full w-56  bg-red-600">
+            <div className="flex flex-col  items-center justify-between h-full w-56  bg-gray-500">
               <SideMenu />
             </div>
           </div>

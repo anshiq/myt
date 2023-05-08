@@ -1,11 +1,22 @@
+import Card from "@/app/component/card";
+import PulicUserVideos from "@/lib/PulicUserVideos";
 import React from "react";
 
 type Props = {
   params: { creatorId: string };
 };
 
-function page({ params: { creatorId } }: Props) {
-  return <div>{creatorId}</div>;
+async function page({ params: { creatorId } }: Props) {
+ const VideosData: videoDetails[] = await PulicUserVideos(creatorId) 
+  const content = VideosData.map((eachvideo: videoDetails)=>{
+    return <Card key={eachvideo._id} data={eachvideo}/>
+  })
+return    <>
+    <div className=" mt-14 ">{creatorId}</div>;
+      <div className="grid mt-14 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-1 items-center justify-center mx-auto ">
+        {content.length > 0 ? content : "no content found"}
+      </div>
+    </>
 }
 
 export default page;

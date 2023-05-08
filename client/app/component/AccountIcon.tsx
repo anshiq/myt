@@ -17,7 +17,7 @@ function AccountIcon() {
   }, []);
   return (
     <Link
-      className="h-10 bg-green-900  flex justify-center items-center w-full"
+      className="h-10 bg-gray-400  flex justify-center items-center w-[97%]"
       href={AccountDetail.url}
     >
       {AccountDetail.name}
