@@ -30,7 +30,7 @@ function Search() {
                 onClick={() => {
                   setSearch(eachResponse.name);
                 }}
-                className=" ml-2 hover:border-gray-200 py-1 pl-1 my-1 hover:text-blue-600  border-l border-gray-500 "
+                className="  hover:bg-gray-200 py-1 pl-1 my-1 hover:text-blue-600  border-l border-gray-500 "
                 href={`${eachResponse._id}`}
               >
                 {eachResponse.name}
@@ -53,13 +53,8 @@ function Search() {
       setSearchRecommendationBox(false);
     }
   }, [search.length]);
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // //console.log(search)
-    // code goes here
-  };
   return (
-    <form onSubmit={handleSubmit} className="flex h-full flex-row mr-1">
+    <form  className="flex h-full flex-row mr-1">
       <input
         className="w-full pl-3 h-full"
         onChange={handleSeach}

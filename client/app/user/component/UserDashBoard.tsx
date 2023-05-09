@@ -23,7 +23,7 @@ function UserDashboard() {
   });
   return (
     <>
-      <h1 className="mt-4 ml-4">{Token.name}</h1>
+      <h1 className="mt-4 ml-4 text-lg">{Token.name}</h1>
       <Videos />
     </>
   );
