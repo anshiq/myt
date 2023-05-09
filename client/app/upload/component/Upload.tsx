@@ -20,6 +20,9 @@ function Upload() {
     }
   });
   const handleFileChange = (e: any) => {
+    if(e.target.files[0]> 5 * 1024 * 1024 && e.target.name == "video"){
+      alert("video size is bigger than 5mb")
+    }
     if (e.target.name == "image") setImage(e.target.files[0]);
     else if (e.target.name == "video") setVideo(e.target.files[0]);
   };
@@ -45,18 +48,21 @@ function Upload() {
     }
   };
   return (
-    <form className="flex flex-col justify-center " onSubmit={handleSubmit}>
+    <form className="flex flex-col justify-center w-[90%] p-4 border-2 border-gray-500 sm:w-2/5  " onSubmit={handleSubmit}>
       <label> Upload Image Here</label>
-      <input required name="image" onChange={handleFileChange} type="file" />
+      <input required name="image" className=" " onChange={handleFileChange} type="file" />
       <br className="my-2" />
       <label> Upload Video here </label>
       <input required name="video" onChange={handleFileChange} type="file" />
       <br className="my-2" />
       <label> title here</label>
       <input
+
+          className="border-[1px] p-1 border-gray-700 "
         required
         value={details.title}
         onChange={handleDetails}
+        placeholder="title of the video"
         name="title"
         type="text"
       />
@@ -64,13 +70,15 @@ function Upload() {
       <label> description here</label>
       <input
         required
+        placeholder="description of the video"
         value={details.description}
+          className="border-[1px] p-1 border-gray-700 "
         onChange={handleDetails}
         name="description"
         type="text"
       />
       <br className="my-2" />
-      <button type="submit"> Publish</button>
+      <button className="bg-gray-600 hover:bg-gray-500 p-1.5 mx-auto w-1/3" type="submit"> Publish</button>
     </form>
   );
 }

@@ -21,7 +21,11 @@ function Videos() {
       getVideos();
     }
   }, []);
-  return <>{content}</>;
+  return <>
+      <div className="grid mt-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-1 items-center justify-center mx-auto ">
+      {content}
+      </div>
+      </>
 }
 
 export default Videos;
