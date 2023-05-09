@@ -148,7 +148,7 @@ const login = async (req, res) => {
       res.send({ token: "", login: false, msg: "Credentials are wrong" });
     }
   } catch (err) {
-    res.send({ token: "", login: false, msg: "Issue on server side" });
+    res.send({ token: "", login: false, msg: "User don't exist" });
   }
 };
 const signup = async (req, res) => {

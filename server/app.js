@@ -19,12 +19,12 @@ const start = async () => {
   try {
     await connect("mongodb://127.0.0.1:27017/notesapp");
     app.listen(
-      8080
-      //console.log(`server up n running on 8080 and connected to db....`)
+      8080,()=>
+      console.log(`server up n running on 8080 and connected to db....`)
     );
   } catch (error) {
-    //console.log(error);
-    //console.log("server did not started because of error in db connection...");
+    console.log(error);
+    console.log("server did not started because of error in db connection...");
   }
 };
 start();
