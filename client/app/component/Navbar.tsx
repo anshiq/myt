@@ -9,7 +9,7 @@ function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <>
-      <nav className="flex fixed bg-gray-500-500 py-1 text-center  top-0 bg-gray-500 flex-row items-center  w-full">
+      <nav className="flex fixed bg-gray-500-500 py-1  top-0 bg-gray-500 flex-row items-center  w-full">
         <div className="mx-2">
           <VscMenu onClick={() => setShowMenu(!showMenu)} size="2rem" />
         </div>

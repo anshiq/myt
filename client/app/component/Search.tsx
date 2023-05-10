@@ -30,7 +30,7 @@ function Search() {
                 onClick={() => {
                   setSearch(eachResponse.name);
                 }}
-                className="  hover:bg-gray-200 py-1 pl-1 my-1 hover:text-blue-600  border-l border-gray-500 "
+                className="  hover:bg-gray-200 py-1 pl-1 my-1 hover:text-blue-600 text-black border-l border-gray-500 "
                 href={`${eachResponse._id}`}
               >
                 {eachResponse.name}
@@ -66,7 +66,7 @@ function Search() {
         onClick={() => setSearchRecommendationBox(false)}
         className={`${
           searchRecommendationBox
-            ? "absolute   h-72 top-14 flex flex-col  bg-white w-3/4"
+            ? "absolute   h-72 top-14 flex flex-col text-black bg-white w-3/4"
             : "hidden"
         }  `}
       >
