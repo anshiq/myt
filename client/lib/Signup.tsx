@@ -1,8 +1,7 @@
 async function SignUp(name: string, email: string , password: string) {
 
-  alert(process.env.backend_url)
 const backend_url = process.env.backend_url
-  alert(backend_url)
+  // alert(backend_url)
  const creds = {
       email: email,
       password: password,
