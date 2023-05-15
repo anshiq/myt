@@ -44,7 +44,13 @@ function VideoCard({ eachVideo, token }: Props) {
         <h2>{`${eachVideo.name}`}</h2>
         <h3>{`${eachVideo.description}`}</h3>
       </Link>
-      <button className="  border-2 border-gray-500 p-3 hover:bg-red-700 " onClick={deleteVideo}> Delete Video</button>
+      <button
+        className="  border-2 border-gray-500 p-3 hover:bg-red-700 "
+        onClick={deleteVideo}
+      >
+        {" "}
+        Delete Video
+      </button>
     </div>
   );
 }

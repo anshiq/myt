@@ -1,6 +1,8 @@
 async function uploadVideo( formdata: FormData,token: string) {
+
+const backend_url = process.env.backend_url
   try {
-  const response =await fetch("http://127.0.0.1:8080/upload",{
+  const response =await fetch(`${backend_url}/upload`,{
     method: "POST",
     headers: {
       'token':token

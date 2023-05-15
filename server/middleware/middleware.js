@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const sendJwtToken = (_id, name) => {
-  let secret = process.env.jwt_sec || "hulehue";
-  data = {
+  const secret = process.env.jwt_sec;
+  const data = {
     id: _id,
     name: name,
   };
@@ -12,9 +12,8 @@ const sendJwtToken = (_id, name) => {
 const verifyToken = (req, res, next) => {
   const { token } = req.headers;
   if (token) {
-    const secret = process.env.jwt_sec || "hulehue";
+    const secret = process.env.jwt_sec;
     const decode = jwt.verify(token, secret);
-    // //console.log(decode.id);
     req.user = decode.id;
     next();
   } else {

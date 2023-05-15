@@ -1,6 +1,8 @@
 
 async function SearchRecommendation(inputText:string) {
-  const response = await fetch('http://127.0.0.1:8080/api/search',{
+
+const backend_url = process.env.backend_url
+  const response = await fetch(`${backend_url}/api/search`,{
     mode: 'cors',
     method: 'POST',
     body: JSON.stringify({

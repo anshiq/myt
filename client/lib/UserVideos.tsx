@@ -1,5 +1,7 @@
 async function UserVideos(token: string) {
-const  response =await fetch('http://127.0.0.1:8080/auth/uservideos',{
+
+const backend_url = process.env.backend_url
+const  response =await fetch(`${backend_url}/auth/uservideos`,{
   headers: {
     token: token
   }

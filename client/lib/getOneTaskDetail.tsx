@@ -1,6 +1,8 @@
 async function getOneTaskDetails(id: string) {
+
+const backend_url = process.env.backend_url
   const bodyData = JSON.stringify({"id":id})
-  const  response = await fetch('http:127.0.0.1:8080/api/one',{
+  const  response = await fetch(`${backend_url}/api/one`,{
     mode: 'cors',
     method: 'POST',
     body: bodyData,

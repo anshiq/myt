@@ -29,7 +29,7 @@ export default function Signup() {
     //console.log(signup);
 
     if (signup.signup == true) {
-      alert("hule created account successsfully");
+      alert("Created account successsfully");
       route.push("/login");
     } else {
       alert("unable to create account");
@@ -81,7 +81,10 @@ export default function Signup() {
           onChange={handleChange}
         />
         <br className="my-2" />
-        <button type="submit" className="bg-gray-600 hover:bg-gray-500 p-1.5 mx-auto w-1/3">
+        <button
+          type="submit"
+          className="bg-gray-600 hover:bg-gray-500 p-1.5 mx-auto w-1/3"
+        >
           {" "}
           Signup
         </button>

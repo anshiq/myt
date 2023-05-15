@@ -9,7 +9,12 @@ export default function page() {
   return (
     <div className="flex flex-col w-full min-h-screen justify-center border-3 border-gray-500 items-center">
       <Signup />
-      <Link className="  border-2 border-gray-500 p-3 hover:bg-gray-500 "  href={"/login"}>Login </Link>
+      <Link
+        className="  border-2 border-gray-500 p-3 hover:bg-gray-500 "
+        href={"/login"}
+      >
+        Login{" "}
+      </Link>
     </div>
   );
 }

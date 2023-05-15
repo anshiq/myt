@@ -56,7 +56,10 @@ export default function Login() {
           placeholder="Enter your Password"
         />
         <br className="my-2" />
-        <button type="submit" className="bg-gray-600 hover:bg-gray-500 p-1.5 mx-auto w-1/3">
+        <button
+          type="submit"
+          className="bg-gray-600 hover:bg-gray-500 p-1.5 mx-auto w-1/3"
+        >
           {" "}
           Login
         </button>

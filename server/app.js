@@ -17,10 +17,11 @@ app.use("/auth", verifyToken, authRouter);
 app.use("/upload", verifyToken, authUploadRouter);
 const start = async () => {
   try {
-    await connect("mongodb://127.0.0.1:27017/notesapp");
-    app.listen(
-      8080,()=>
-      console.log(`server up n running on 8080 and connected to db....`)
+    const db_url = process.env.mongod_url;
+    const port = process.env.PORT;
+    await connect(db_url);
+    app.listen(port, () =>
+      console.log(`server up n running on ${port} and connected to db....`)
     );
   } catch (error) {
     console.log(error);

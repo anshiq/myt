@@ -1,6 +1,6 @@
 async function DeleteVideo(id: string, token: string) {
-
-    const response = await fetch("http://127.0.0.1:8080/auth/change",{
+const backend_url = process.env.backend_url
+    const response = await fetch(`${backend_url}/auth/change`,{
       method: "DELETE",
       mode: 'cors',
       headers: {

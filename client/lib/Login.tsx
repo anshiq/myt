@@ -1,9 +1,11 @@
 async function Login(email:string, password :string) {
+
+const backend_url = process.env.backend_url
   const bodyContent = {
     "email": email,
     "password" : password
   }
-  const response = await fetch('http://127.0.0.1:8080/api/login',{
+  const response = await fetch(`${backend_url}/api/login`,{
     body:JSON.stringify( bodyContent),
 
     method: "POST",

@@ -25,16 +25,16 @@ function Search() {
             setSearchRecommendationBox(true);
           }
           const content = response.map((eachResponse: any) => (
-              <Link
+            <Link
               key={eachResponse._id}
-                onClick={() => {
-                  setSearch(eachResponse.name);
-                }}
-                className="  hover:bg-gray-200 py-1 pl-1 my-1 hover:text-blue-600 text-black border-l border-gray-500 "
-                href={`${eachResponse._id}`}
-              >
-                {eachResponse.name}
-              </Link>
+              onClick={() => {
+                setSearch(eachResponse.name);
+              }}
+              className="  hover:bg-gray-200 py-1 pl-1 my-1 hover:text-blue-600 text-black border-l border-gray-500 "
+              href={`${eachResponse._id}`}
+            >
+              {eachResponse.name}
+            </Link>
           ));
 
           const element = <>{content}</>;
@@ -54,7 +54,7 @@ function Search() {
     }
   }, [search.length]);
   return (
-    <form  className="flex h-full flex-row mr-1">
+    <form className="flex h-full flex-row mr-1">
       <input
         className="w-full pl-3 h-full"
         onChange={handleSeach}

@@ -137,6 +137,7 @@ const login = async (req, res) => {
     const result = await comparePassword(password, data.password);
     if (result) {
       const token = sendJwtToken(data._id, data.name);
+      console.log(token);
       res.send({
         token: token,
         login: true,
