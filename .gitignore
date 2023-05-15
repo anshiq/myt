@@ -1,8 +1,6 @@
 node_modules
 *.jpg
 *.mp4
-videos/*
-images/*
 # Miscellaneous
 *.class
 *.log
