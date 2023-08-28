@@ -15,6 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api", router);
 app.use("/auth", verifyToken, authRouter);
 app.use("/upload", verifyToken, authUploadRouter);
+app.get('/hi',(req,res)=>{
+  res.send("hi")
+})
 const start = async () => {
   try {
     const db_url = process.env.mongod_url;
