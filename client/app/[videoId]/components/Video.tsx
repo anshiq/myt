@@ -8,7 +8,7 @@ export default function Video({ videoDetails }: Params) {
     <>
       <div className="w-full items-center  justify-center">
         <video
-          src={`http://127.0.0.1:8080/api/one/${videoDetails._id}`}
+          src={`${process.env.backend_url}/api/one/${videoDetails._id}`}
           className="sm:w-5/6 w-full mx-auto  h-auto"
           controls
         ></video>

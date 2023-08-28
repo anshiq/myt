@@ -17,7 +17,7 @@ export default function Card({ data }: Props) {
             alt="error"
             width={320}
             height={180}
-            src={`http://127.0.0.1:8080/${data._id}.jpg`}
+            src={`${process.env.backend_url}/${data._id}.jpg`}
           />
         </div>
         <h2>{`${data.name}`}</h2>

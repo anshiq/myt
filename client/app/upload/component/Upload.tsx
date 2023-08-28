@@ -30,7 +30,7 @@ function Upload() {
     const { name, value } = e.target;
     setDetails((prevData) => ({ ...prevData, [name]: value }));
   };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const token: string | null = localStorage.getItem("myytkey");
     if (token) {
@@ -40,7 +40,25 @@ function Upload() {
       formdata.append("description", details.description);
       formdata.append("image", image);
       formdata.append("video", video);
-      uploadVideo(formdata, tokenDetails.token);
+
+      const backend_url = process.env.backend_url;
+      try {
+        const response = await fetch(`${backend_url}/upload`, {
+          method: "POST",
+          headers: {
+            token: tokenDetails.token,
+          },
+          body: formdata,
+        });
+        if (response.ok) {
+          alert("files uploaded successfully");
+          window.location.replace("/user");
+        } else {
+          alert("server side problem");
+        }
+      } catch (error) {
+        alert("problem while uploading file");
+      }
     } else {
       localStorage.removeItem("myytkey");
       route.push("/login");

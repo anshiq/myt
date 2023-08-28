@@ -21,7 +21,7 @@ app.get('/hi',(req,res)=>{
 const start = async () => {
   try {
     const db_url = process.env.mongod_url;
-    const port = process.env.PORT || 8080;
+    const port = process.env.PORT || 6225;
     await connect(db_url);
     app.listen(port, () =>
       console.log(`server up n running on ${port} and connected to db....`)

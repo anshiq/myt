@@ -20,7 +20,7 @@ function Recommendations({ allvideos }: prop) {
             alt="error"
             width={320}
             height={180}
-            src={`http://127.0.0.1:8080/${eachVideo._id}.jpg`}
+            src={`${process.env.backend_url}/${eachVideo._id}.jpg`}
           />
         </div>
         <h2>{`${eachVideo.name}`}</h2>
