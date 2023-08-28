@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env:{
-    backend_url:  "http://16.171.197.13:8080"},
+    backend_url:  "http://16.171.34.66:6225"},
   experimental: {
     appDir: true,
   },
@@ -9,8 +9,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: '127.0.0.1',
-        port: '8080',
+        hostname: '16.171.34.66',
+        port: '6225',
         pathname:'/**' 
       },
     ],
